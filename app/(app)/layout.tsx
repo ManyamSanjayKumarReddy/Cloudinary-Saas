@@ -11,12 +11,18 @@ import {
   Share2Icon,
   UploadIcon,
   ImageIcon,
+  MoonStar,
+  ImageOff,
+  LogInIcon,
+  LogIn
 } from "lucide-react";
 
 const sidebarItems = [
-  { href: "/home", icon: LayoutDashboardIcon, label: "Home Page" },
+  { href: "/welcome", icon: LayoutDashboardIcon, label: "Home Page" },
   { href: "/social-share", icon: Share2Icon, label: "Social Share" },
   { href: "/video-upload", icon: UploadIcon, label: "Video Upload" },
+  { href: "/grayscale-image", icon: MoonStar, label: "Gray Scale" },
+  { href: "/bg-removal", icon: ImageOff, label: "Background Remove" },
 ];
 
 export default function AppLayout({
@@ -36,6 +42,10 @@ export default function AppLayout({
 
   const handleSignOut = async () => {
     await signOut();
+  };
+
+  const handleSignIn = () => {
+    router.push("/sign-in"); // Redirect to the sign-in page
   };
 
   return (
@@ -67,7 +77,7 @@ export default function AppLayout({
               </Link>
             </div>
             <div className="flex-none flex items-center space-x-4">
-              {user && (
+              {user ? (
                 <>
                   <div className="avatar">
                     <div className="w-8 h-8 rounded-full">
@@ -89,6 +99,14 @@ export default function AppLayout({
                     <LogOutIcon className="h-6 w-6" />
                   </button>
                 </>
+              ) : (
+                <button
+                  onClick={handleSignIn}
+                  className="btn btn-primary bg-primary"
+                >
+                  <LogIn className="h-6 w-6" />
+                  <span className="ml-2">Sign In</span>
+                </button>
               )}
             </div>
           </div>

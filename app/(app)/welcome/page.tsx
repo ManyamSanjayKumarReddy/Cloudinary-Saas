@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import VideoCard from "@/components/VideoCard";
 import { Video } from "@/types";
-function Home() {
+function Welcome() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +27,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    fetchVideos();
+    fetchVideos()
   }, [fetchVideos]);
 
   const handleDownload = useCallback((url: string, title: string) => {
@@ -41,7 +41,7 @@ function Home() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="mx-auto text-2xl font-bold center text-center">Loading...</div>;
   }
 
   return (
@@ -66,4 +66,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Welcome;

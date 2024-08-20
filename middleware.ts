@@ -4,8 +4,9 @@ import { NextResponse } from "next/server";
 const isPublicRoute = createRouteMatcher([
     "/sign-in",
     "/sign-up",
-    "/home",
+
     "/"
+   
 ])
 
 const isPublicApiRoute = createRouteMatcher([
@@ -17,12 +18,12 @@ export default clerkMiddleware((auth, req) => {
     const {userId} = auth();
     const currentUrl = new URL(req.url)
     
-    const isAccessingDashboard = currentUrl.pathname === "/home"
+    const isAccessingDashboard = currentUrl.pathname === "/"
     const isApiRequest = currentUrl.pathname.startsWith("/api")
 
     // If the user is authenticated and not accessing the home page
     if(userId && isPublicRoute(req) && !isAccessingDashboard){
-        return NextResponse.redirect(new URL("/home", req.url))
+        return NextResponse.redirect(new URL("/", req.url))
     }
 
     // Not Logged in
@@ -44,5 +45,5 @@ export default clerkMiddleware((auth, req) => {
 });
 
 export const config = {
-    matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+    matcher: ["/((?!.*\\..*|_next).*)","/(api|trpc)(.*)"],
   };

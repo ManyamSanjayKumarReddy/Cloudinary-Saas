@@ -1,113 +1,164 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import Link from "next/link";
+import { Image, Video, Sliders, Scissors, Cloud } from "lucide-react";
+
+
+const movePageDown = () => {
+  window.scrollBy({ top: window.innerHeight / 2, behavior: 'smooth' });
+};
+
+
+export default function home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="min-h-screen bg-base-200">
+      {/* Hero Section */}
+      <section
+        className="hero h-[700px] bg-cover bg-center flex flex-col items-start justify-start relative"
+        style={{ backgroundImage: `url('/images/banner.png')` }}
+      >
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer flex flex-col items-center space-y-2">
+          {[...Array(2)].map((_, index) => (
+            <div
+              key={index}
+              className="animate-bounce"
+              onClick={movePageDown}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-10 h-10 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
+      {/* Features Section */}
+      <section className="py-16 bg-base-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-10">Our Key Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Feature 1 */}
+            <Link href="/social-share">
+              <div className="card bg-base-200 shadow-lg cursor-pointer">
+                <div className="card-body">
+                  <Image className="w-16 h-16 text-primary mb-4 mx-auto" />
+                  <h3 className="text-2xl font-bold mb-2">Image Transformation</h3>
+                  <p className="text-gray-600">
+                    Resize, crop, and optimize images to fit any platform or device.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Feature 2 */}
+            <Link href="/video-upload">
+              <div className="card bg-base-200 shadow-lg cursor-pointer">
+                <div className="card-body">
+                  <Video className="w-16 h-16 text-primary mb-4 mx-auto" />
+                  <h3 className="text-2xl font-bold mb-2">Video Compression</h3>
+                  <p className="text-gray-600">
+                    Compress and optimize videos without sacrificing quality.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Feature 3 */}
+            <Link href="/bg-removal">
+              <div className="card bg-base-200 shadow-lg cursor-pointer">
+                <div className="card-body">
+                  <Scissors className="w-16 h-16 text-primary mb-4 mx-auto" />
+                  <h3 className="text-2xl font-bold mb-2">Background Removal</h3>
+                  <p className="text-gray-600">
+                    Remove backgrounds from images seamlessly for stunning visuals.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Feature 4 */}
+            <Link href="/grayscale-image">
+              <div className="card bg-base-200 shadow-lg cursor-pointer">
+                <div className="card-body">
+                  <Sliders className="w-16 h-16 text-primary mb-4 mx-auto" />
+                  <h3 className="text-2xl font-bold mb-2">Grayscale Conversion</h3>
+                  <p className="text-gray-600">
+                    Convert images to grayscale with high-quality results.
+                  </p>
+                </div>
+              </div>
+            </Link>
+
+            {/* Feature 5 */}
+            {/* Uncomment and update as needed */}
+            {/* <Link href="/cloud-storage">
+              <div className="card bg-base-200 shadow-lg cursor-pointer">
+                <div className="card-body">
+                  <Cloud className="w-16 h-16 text-primary mb-4 mx-auto" />
+                  <h3 className="text-2xl font-bold mb-2">Cloud Storage</h3>
+                  <p className="text-gray-600">
+                    Store and manage your media assets securely in the cloud.
+                  </p>
+                </div>
+              </div>
+            </Link> */}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-primary text-primary-content">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-6">Join Us Today</h2>
+          <p className="text-xl mb-8">
+            Start enhancing your media assets with our powerful cloud tools.
           </p>
-        </a>
+          <Link href="/sign-up">
+            <button className="btn btn-lg btn-secondary">
+              Start Your Free Trial Today
+            </button>
+          </Link>
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+      {/* Footer */}
+      <footer className="bg-base-300 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-gray-600">
+            © {new Date().getFullYear()} Skilled GURU AI. All rights
+            reserved.
           </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <Link href="/privacy-policy">
+              <button className="link link-hover text-gray-600">
+                Privacy Policy
+              </button>
+            </Link>
+            <Link href="/terms-of-service">
+              <button className="link link-hover text-gray-600">
+                Terms of Service
+              </button>
+            </Link>
+            <Link href="/contact-us">
+              <button className="link link-hover text-gray-600">
+                Contact Us
+              </button>
+            </Link>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
