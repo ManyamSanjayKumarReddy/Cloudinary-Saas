@@ -5,7 +5,7 @@ const isPublicRoute = createRouteMatcher([
     "/sign-in",
     "/sign-up",
     "/welcome",
-    "/"
+
    
 ])
 
@@ -18,7 +18,7 @@ export default clerkMiddleware((auth, req) => {
     const {userId} = auth();
     const currentUrl = new URL(req.url)
     
-    const isAccessingDashboard = currentUrl.pathname === "/"
+    const isAccessingDashboard = currentUrl.pathname === "/welcome"
     const isApiRequest = currentUrl.pathname.startsWith("/api")
 
     // If the user is authenticated and not accessing the home page
@@ -45,5 +45,5 @@ export default clerkMiddleware((auth, req) => {
 });
 
 export const config = {
-    matcher: ["/((?!.*\\..*|_next).*)","/(api|trpc)(.*)"],
+    matcher: ["/((?!.*\\..*|_next).*)","/", "/(api|trpc)(.*)"],
   };
