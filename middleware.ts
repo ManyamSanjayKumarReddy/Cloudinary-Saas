@@ -23,7 +23,7 @@ export default clerkMiddleware((auth, req) => {
 
     // If the user is authenticated and not accessing the home page
     if(userId && isPublicRoute(req) && !isAccessingDashboard){
-        return NextResponse.redirect(new URL("/", req.url))
+        return NextResponse.redirect(new URL("/welcome", req.url))
     }
 
     // Not Logged in
