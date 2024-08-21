@@ -14,15 +14,15 @@ import {
   MoonStar,
   ImageOff,
   LogInIcon,
-  LogIn
+  LogIn,
+  Image
 } from "lucide-react";
 
 const sidebarItems = [
   { href: "/welcome", icon: LayoutDashboardIcon, label: "Home Page" },
   { href: "/social-share", icon: Share2Icon, label: "Social Share" },
   { href: "/video-upload", icon: UploadIcon, label: "Video Upload" },
-  { href: "/grayscale-image", icon: MoonStar, label: "Gray Scale" },
-  { href: "/bg-removal", icon: ImageOff, label: "Background Remove" },
+  { href: "/image-transformations", icon: Image, label: "Image Tranformations" },
 ];
 
 export default function AppLayout({
